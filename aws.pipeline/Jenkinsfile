@@ -33,6 +33,7 @@ stages{
                     agent {label 'aws-client'}
                     steps {
                         echo 'PRIMA DI SCP'
+                        sh "pwd"
                         copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}'), target: '.'
                         sh "scp -i ${params.jenkins_home}/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
@@ -42,6 +43,7 @@ stages{
                     agent {label 'aws-client'}
                     steps {
                         echo 'PRIMA DI SCP'
+                        sh "pwd"
                         copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}'), target: '.'
                         sh "scp -i ${params.jenkins_home}/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps"
                     }
