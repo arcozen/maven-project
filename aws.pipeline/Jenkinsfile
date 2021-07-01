@@ -6,8 +6,8 @@ pipeline {
     }
 
     parameters {
-         string(name: 'tomcat_dev', defaultValue: '3.131.133.139', description: 'Staging Server')
-         string(name: 'tomcat_prod', defaultValue: '18.117.182.102', description: 'Production Server')
+         string(name: 'tomcat_dev', defaultValue: '3.139.239.48', description: 'Staging Server')
+         string(name: 'tomcat_prod', defaultValue: '18.191.165.65', description: 'Production Server')
          string(name: 'jenkins_home', defaultValue: '/home/jenkins', description: 'jenkins home on slave')
     }
 
