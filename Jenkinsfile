@@ -5,6 +5,7 @@ pipeline {
     }
     stages{
         stage('Build'){
+            agent {label 'master'}
             steps {
                 sh 'mvn clean package'
             }
@@ -16,6 +17,7 @@ pipeline {
             }
         }
         stage ('Deploy to Staging'){
+            agent {label 'master'}
             steps {
                 deploy adapters: 
                     [tomcat8(credentialsId: 'tomcat-deployer', path: '', url: 'http://mytomcat:8080')],
@@ -23,6 +25,7 @@ pipeline {
             }
         }
         stage ('Deploy to Production'){
+            agent {label 'master'}
             steps{
                 timeout(time:5, unit:'DAYS'){
                     input message:'Approve PRODUCTION Deployment?'
